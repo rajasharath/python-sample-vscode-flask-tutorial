@@ -29,7 +29,7 @@ def hello_there(name):
 def get_data():
     return app.send_static_file("data.json")
 
-@app.route("/api/<url>")
+@app.route("/api/links/<url>")
 def return_links(url):
     #Query the website and return the html to the variable 'page'
     page = urlopen(wiki)
@@ -37,7 +37,7 @@ def return_links(url):
     soup = BeautifulSoup(page)
     allhrefs= soup.find_all("a")
     return render_template(
-        "url_links.html",
+        "return_links.html",
         result=allhrefs
     )
 
